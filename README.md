@@ -31,6 +31,16 @@ fields. **Not affiliated with Workday**; Workday is a trademark of Workday, Inc.
 /plugin install workday-integration@workday-integration
 ```
 
+**VS Code (GitHub Copilot)** — the same plugin, skill and MCP server, in agent mode, with `chat.plugins.enabled` on: in
+Agent Customizations › Browse › Configure Marketplaces › Add Marketplace, enter `ruinosus/workday-integration` (or add
+it to `chat.plugins.marketplaces` in your settings), then install **workday-integration** from the list. The Copilot
+CLI takes the same marketplace:
+
+```
+copilot plugin marketplace add ruinosus/workday-integration
+copilot plugin install workday-integration@workday-integration
+```
+
 Without Claude Code, from npm: `npx @ruinosus/workday-integration <command>` (the same commands as `node scripts/wws.mjs`),
 and the MCP server as `npx -y -p @ruinosus/workday-integration workday-wws-mcp`.
 
