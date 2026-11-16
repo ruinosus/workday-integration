@@ -1,0 +1,14 @@
+{
+  "name": "workday-integration-repo",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "npm/workday-integration",
+    "dev/workday-integration/tools"
+  ],
+  "scripts": {
+    "assets": "npm run -s assets -w dev/workday-integration/tools",
+    "check": "npm run -s check --workspaces --if-present",
+    "zip": "npm run -s zip --workspaces --if-present"
+  }
+}

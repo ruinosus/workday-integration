@@ -1,0 +1,14 @@
+{
+  "name": "workday-integration",
+  "owner": {
+    "name": "ruinosus"
+  },
+  "description": "A local catalog of the Workday Web Services (SOAP) and REST APIs, for whoever designs a Workday integration. Not affiliated with Workday.",
+  "plugins": [
+    {
+      "name": "workday-integration",
+      "source": "./",
+      "description": "A sibling of DNA for whoever designs a Workday integration: a local catalog of the Workday Web Services (SOAP) — the operation for a use case in Portuguese or English, its request and response, a SOAP envelope with {{placeholders}}, and the spec of the Copilot Studio Workday connector's «Execute SOAP operation». It reads the files you have and calls no tenant. Not affiliated with Workday."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+.DS_Store
+node_modules/
+dist/
+evals/results/
+npm/*/*.tgz
+dev/*/tools/sources.json
+# the npm package's built files: copied from the plugin by its prepack
+npm/workday-integration/scripts/
+npm/workday-integration/examples/
+npm/workday-integration/LICENSE
