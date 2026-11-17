@@ -1,6 +1,6 @@
 {
   "name": "@ruinosus/workday-integration",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "A local catalog of the Workday Web Services (SOAP) and Workday's REST APIs, as a CLI and an MCP server: find the operation or endpoint, read its fields, and write the SOAP envelope or the Copilot Studio Workday connector spec. Calls no tenant. Not affiliated with Workday.",
   "type": "module",
   "bin": {

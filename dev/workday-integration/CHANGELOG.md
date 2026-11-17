@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.7 — 2026-11-17
+
+From a claude.ai session: the web has no `fetch` (no network), so the skill had nothing to answer from.
+
+- SKILL.md: a line at the top says what claude.ai cannot do; section 1 says what to do with no network — do not try
+  `fetch`, ask for exactly which files (the two HR WSDLs with their `.xsd`, the Operation Directory page) and `ingest`
+  them with `--version` (an upload loses the folders the version is read from, so without it `ingest` fails).
+- README: the same, in «Start».
+
 ## 0.3.6 — 2026-11-06
 
 From the VS Code write test, run again on 0.3.5 (it passed; the agent wrote the Power Fx again by hand to leave a
