@@ -56,6 +56,10 @@ node scripts/wws.mjs fetch --services hr --version v47.0
 downloads the Operation Directory and the WSDLs of the HR services from Workday Community and indexes them — the only
 command that uses the network. Or index what you have: `ingest <the directory page or its text, and the WSDLs>`.
 
+**claude.ai** has no network for `fetch`: upload `Human_Resources.wsdl`, `Integrations.wsdl` (and their `.xsd`) and the
+Operation Directory page, and the skill indexes them with
+`ingest <folder> --version v47.0` (`--version` is needed because an upload loses the `<Service>/<version>/` folders).
+
 ## Use
 
 ```

@@ -4,7 +4,7 @@ description: Finds which Workday Web Service (SOAP) operation does what someone 
 license: MIT
 compatibility: Needs code execution and Node.js 18 or later; nothing to install. Reads only the files the person gives it; calls no Workday tenant. Not affiliated with Workday.
 metadata:
-  version: "0.3.6"
+  version: "0.3.7"
 ---
 
 # workday-integration: the Workday operation for a use case, and what to send it
@@ -16,6 +16,9 @@ for you, and what it ranks or chooses by default is a lead, not an answer. It **
 credential; what it writes has only `{{placeholders}}`, never a person's data. Paths are relative to this skill's
 folder; every command takes `--json` (read that) and `--index <folder>` (the index is in
 `~/.cache/dna/workday-integration` by default, never in this skill). Not affiliated with Workday.
+
+> **On claude.ai (no network, no shared cache):** `fetch` does not work and nothing is indexed yet. Say so in one line,
+> then use `ingest` on the files the person uploads (section 1) — it carries no Workday file of its own.
 
 ## 1. The index first
 
@@ -32,8 +35,23 @@ node scripts/wws.mjs ingest <files or folders>               # what the person a
 
 `fetch` downloads the Operation Directory page and the WSDLs of the HR services (or `--services A,B`, `all`) and
 indexes them; `fetch --rest` the REST specifications too (the latest version of each HR service); run it only when the
-person agrees to go to the network. `ingest` takes the directory page (`.html`, or
-its text as `.txt`) and the `<Service>.wsdl` (and `.xsd`) files. To try the commands without real files, `examples/`
+person agrees to go to the network. **No network** (claude.ai, a locked-down machine): do not try `fetch`; ask for the
+files below, then `ingest` them. `ingest` takes the directory page (`.html`, or
+its text as `.txt`) and the `<Service>.wsdl` (and `.xsd`) files. 
+
+**Asking for the files** (no network). Name these and nothing else, for the version the person uses (v47.0 below):
+`Human_Resources.wsdl` (workers, flexible work arrangement, emergency contact, preferred name), `Integrations.wsdl`
+(business process operations: approve, `Get_Event_Detail`) — each with the `.xsd` files next to it, in the same folder —
+and the Operation Directory page (`.html`, or its text as `.txt`). On Workday Community they are under Web Services ›
+Operation Directory and the version's WSDL list; on a machine that ran `fetch`, they are in
+`~/.cache/dna/workday-integration/wsdl/<Service>/<version>/` and `.../wsdl/operation-directory.html`. Add another
+service's WSDL only when the question needs it. When they arrive, put them in one folder and run
+`node scripts/wws.mjs ingest <folder> --version v47.0`: uploads lose the `<Service>/<version>/` folders the version is
+read from, so **pass `--version`** or each WSDL fails with «Could not infer version». Run `status`, tell the person
+what is now indexed, then go on to section 2. They are big (the HR WSDL is about 4 MB): read them through the commands,
+never into the conversation.
+
+To try the commands without real files, `examples/`
 has synthetic ones (made-up fields: never quote them as Workday's).
 
 ## 2. Find, check, then write
